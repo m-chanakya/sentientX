@@ -2,6 +2,7 @@ from crawler.models import *
 
 def render_category(category):
 	return {
+		'link': "crawler/products/"+str(category.id),
 		'name': category.name,
 		'date': category.crawled_date,
 		'total': len(Product.objects.filter(category= category))
@@ -15,6 +16,7 @@ def render_categories():
 
 def render_product(product):
 	return {
+		'link': "crawler/reviews/"+str(product.id),
 		'name': product.name,
 		'date': product.crawled_date,
 		'total': len(Review.objects.get(product= product))

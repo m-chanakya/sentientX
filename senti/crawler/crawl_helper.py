@@ -121,10 +121,12 @@ def crawl_categories():
 		response = urllib2.urlopen(GET_CAT_URL, timeout=5)
 	except:
 		return {'status': 1, 'msg': 'URL open error'}
+	count = 0
 	html = response.read()
 	soup = BeautifulSoup(html, "html.parser")
 	cats = soup.find('form', {'action': '/search'}).find('select').find_all('option')
 	for cat in cats:
+		count += 1
 		data = {}
 		data['sid'] = cat['data-storeid']
 		category = Category.objects.filter(sid = data['sid'])
@@ -133,6 +135,7 @@ def crawl_categories():
 		data['name'] = cat.text.strip()
 		data['link'] = _create_product_list_url(cat['data-storeurl'], cat['data-storeid'])
 		Category.objects.create(**data)
+	return {'status': 0, 'msg': 'Success', 'count': count}
 
 # def main():
 # 	print crawl_product_list(category)
