@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from crawler.models import *
 from crawler.crawl_helper import *
+from crawler.api import *
 
 # Create your views here.
 def home(request):
@@ -9,3 +10,5 @@ def home(request):
 	return render_to_response('crawler/home.html', context_instance=context)
 
 def category(request):
+	context = RequestContext(request, {'request': request, 'data': render_categories()})
+	return render_to_response('crawler/category.html', context_instance=context)
