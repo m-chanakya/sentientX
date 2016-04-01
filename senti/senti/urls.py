@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'crawler/categories', 'crawler.views.categories', name='categories'),
     url(r'crawler/products/(?P<category_id>\w+)', 'crawler.views.products', name='products'),
     url(r'crawler/reviews/(?P<product_id>\w+)', 'crawler.views.reviews', name='reviews'),
-    url(r'crawler/crawl/(?P<type>\w+)/?P<id>\w+)', 'crawler.views.crawl', name='crawl'),
+    url(r'crawler/crawl/(?P<type>\w+)/(?P<id>\w+)', 'crawler.views.crawl', name='crawl'),
 ]
