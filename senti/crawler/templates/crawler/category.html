@@ -61,7 +61,7 @@
 {% for choice in data %}
     <tr >
 
-    <td onClick=window.open("{{choice.link}}")>{{ choice.name }} </td>
+    <td><a href="{{choice.link}}">{{ choice.name }} </a></td>
     <td >{{choice.total}}</td>
     <td > {{choice.date}}</td>
     <td >  <a href = "{{choice.relink}}" > <button type="button">Re-crawl</button>  </a> </td>

@@ -68,7 +68,7 @@
 
 <div class="container">
   <div class="jumbotron center">
-    <h1>SentiTool - Product Reviews </h1><h3>Camera and Accessories</h3>
+    <h1>SentiTool - Product Reviews </h1><h3>{{ product }}</h3>
 
   </div>
 {% for choice in data %}
@@ -137,6 +137,17 @@ Number of upvotes : {{choice.upvotes}}  Total number of votes : {{choice.total_v
 <br>
 </div>
 {% endfor %}
+
+<div class="col-md-12 vertical-center">
+{% if prev != None %}
+<a href="{{prev}}">Previous</a>
+{% endif %}
+</div>
+<div class="col-md-12 vertical-center">
+{% if next != None %}
+<a href="{{next}}">Next</a>
+{% endif %}
+</div>
 
 </div>
 

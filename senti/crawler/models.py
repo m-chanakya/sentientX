@@ -9,12 +9,14 @@ class Category(models.Model):
 	sid = models.CharField(max_length=10)
 	link = models.URLField()
 	crawled_date = models.DateTimeField(auto_now_add=True)
+	total = models.SmallIntegerField(default = 1500)
 
 class Product(models.Model):
 	name = models.CharField(max_length=100)
 	link = models.URLField()
 	category = models.ForeignKey(Category)
 	crawled_date = models.DateTimeField(auto_now_add=True)
+	total = models.SmallIntegerField(default = 0)
 
 class Review(models.Model):
 	crawled_date = models.DateTimeField(auto_now_add=True)

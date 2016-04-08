@@ -17,7 +17,7 @@
     text-align: center;
   }
 
-  td{        text-align: center;
+  td{ text-align: center;
   }
 
     .center{
@@ -44,21 +44,21 @@
 
 <div class="container">
   <div class="jumbotron center">
-    <h1>SentiTool - Products</h1><h3>Camera and Accessories</h3>
+    <h1>SentiTool - Products</h1><h3>{{ category }}</h3>
   </div>
 
 
 <table class="table table-striped">
 <tr> 
 <th style="text-align: center;"> Product Name</th>
-<th style="text-align: center;"> Number of products</th>
+<th style="text-align: center;"> Number of reviews</th>
 <th style="text-align: center;padding-left: 40px"> Crawled Date</th>
 <th style="width: 300px" ></th>
 </tr>
 {% for choice in data %}
     <tr >
 
-    <td onClick=window.open("{{choice.link}}")>{{ choice.name }} </td>
+    <td><a href="{{choice.link}}">{{ choice.name }} </a></td>
     <td >{{choice.total}}</td>
     <td style="padding-left: 40px;"> {{choice.date}}</td>
     <td >  <a href = "{{choice.relink}}" > <button type="button">Re-crawl</button>  </a> </td>

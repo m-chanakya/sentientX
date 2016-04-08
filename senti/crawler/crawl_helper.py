@@ -1,8 +1,8 @@
 import urllib2
 from bs4 import BeautifulSoup
 from datetime import datetime
-import time
 from crawler.models import *
+import time
 
 BASE_URL = "http://www.flipkart.com"
 GET_CAT_URL = "http://www.flipkart.com/footwear/pr?sid=osp"
@@ -13,6 +13,7 @@ def crawl_product_reviews(product):
 		Crawls user reviews 
 		of a given product
 	'''
+	product = Product.objects.get(id = product)
 	count = 0
 	link = BASE_URL + "/"+ product.link
 	no_of_tries = 0
@@ -30,6 +31,13 @@ def crawl_product_reviews(product):
 
 		html = response.read()
 		soup = BeautifulSoup(html, "html.parser")
+		total = soup.find('span', {'class': 'fk-font-normal unboldtext'})
+		if total:
+			try:
+				product.total = int(total.text.strip("(").strip(")"))
+				product.save()
+			except:
+				pass
 		review_divs = soup.find_all(lambda tag: tag.name=='div' and ('review-id' in tag.attrs))
 
 		for review_div in review_divs:
@@ -64,12 +72,13 @@ def crawl_product_reviews(product):
 		print count
 	return {'status': 0, 'msg': 'Success', 'count': count}
 
-
 def crawl_product_list(category):
 	'''
 		Crawls list of products 
 		in a given category
 	'''
+	category = Category.objects.get(id = category)
+
 	def _create_review_url(url):
 		parts = url.split('/')[1:]
 		return '/'.join( [parts[0], 'product-reviews', parts[2].split('&')[0] ] )
@@ -82,6 +91,7 @@ def crawl_product_list(category):
 		try:
 			response = urllib2.urlopen(link, timeout=5)
 		except:
+			print "URL ERROR"
 			if no_of_tries == 5:
 				return {'status': 1, 'msg': 'URL open error'}
 			no_of_tries += 1
@@ -95,6 +105,7 @@ def crawl_product_list(category):
 		product_divs = soup.find_all('a', {'data-tracking-id': 'prd_title'})
 
 		for product_div in product_divs:
+			count += 1
 			data = {'category': category}
 			data['name'] = product_div['title']
 			product = Product.objects.filter(name = data['name'])
@@ -102,7 +113,6 @@ def crawl_product_list(category):
 				continue
 			data['link'] = _create_review_url(product_div['href'])
 			Product.objects.create(**data)
-			count += 1
 
 		sid = category.sid
 		start = str(count + 1)
