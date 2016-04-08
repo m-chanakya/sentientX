@@ -19,15 +19,8 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', 'crawler.views.home', name='home'),
-<<<<<<< HEAD
-    url(r'^crawler/categories', 'crawler.views.categories', name='categories'),
-    url(r'^crawler/reviews/(?P<product_id>\w+)', 'crawler.views.reviews', name='reviews'),
-    url(r'^crawler/products/(?P<category_id>\w+)', 'crawler.views.products', name='products'),
-    url(r'^crawler/crawl/(?P<type>\w+)/(?P<id>\w+)', 'crawler.views.crawl', name='crawl'),
-=======
     url(r'crawler/categories', 'crawler.views.categories', name='categories'),
     url(r'crawler/products/(?P<category_id>\w+)', 'crawler.views.products', name='products'),
     url(r'crawler/reviews/(?P<product_id>\w+)', 'crawler.views.reviews', name='reviews'),
     url(r'crawler/crawl/(?P<type>\w+)/(?P<id>\w+)', 'crawler.views.crawl', name='crawl'),
->>>>>>> 49bedd6493093e2a1ec2ed52807f6a71ce01d092
 ]
