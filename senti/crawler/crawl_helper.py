@@ -14,13 +14,14 @@ def crawl_product_reviews(product):
 		of a given product
 	'''
 	count = 0
-	link = product.link
+	link = BASE_URL + "/"+ product.link
 	no_of_tries = 0
 	while link:
 		print link
 		try:
 			response = urllib2.urlopen(link, timeout=5)
 		except:
+			print "Error"
 			if no_of_tries == 5:
 				return {'status': 1, 'msg': 'URL open error'}
 			no_of_tries += 1

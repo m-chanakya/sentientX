@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<script>
+  var myJSONList = (("{{json_list}}")
+  mydict = JSON.parse( myJSONList );
+  text = ""
+  for (i = 0, len = mylist.length, ; i < len; i++) {
+    text += '<tr class = "prod">' + mylist[i] + '</tr>'
+
+</script>
+
+<head>
+  <title>SentiTool</title>
+  <style>
+
+
+#header {
+    float: left;
+    color:black;
+    padding:5px;
+}
+#nav {
+
+    height:fill;
+    line-height:30px;
+    background-color:#eeeeee;
+    width:180px;
+    float:left;
+    padding:5px ;        
+
+}
+#section {
+    width:850px;
+    float:left;
+    padding:10px;   
+    vertical-align: left;
+      
+}
+#footer {
+
+    background-color:#eeeeee;
+    color:black;
+    clear:both;
+    text-align:center;
+    padding:5px;    
+}
+    .center{
+      text-align: center;
+    }
+    .vertical-center {
+      vertical-align: middle;
+      text-align: center;
+      border: 1px dashed black;
+    }
+    .vertical-center a {
+      text-decoration: none;
+      color: black;
+    }
+  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <div class="jumbotron center">
+    <h1>SentiTool - Product Reviews </h1><h3>Camera and Accessories</h3>
+
+  </div>
+{% for choice in data %}
+
+<div class="col-md-12 vertical-center">
+<div id="nav">
+<b>{{choice.author}}</b> <br>
+{{choice.date}}<br>
+{% if choice.product_rating == 1 %}
+<img src="http://pngimg.com/upload/star_PNG1592.png" alt="start" height = "20px" width="20px">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Stj%C3%A4rna.svg/2000px-Stj%C3%A4rna.svg.png" alt="start" height = "20px" width="20px">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Stj%C3%A4rna.svg/2000px-Stj%C3%A4rna.svg.png" alt="start" height = "20px" width="20px">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Stj%C3%A4rna.svg/2000px-Stj%C3%A4rna.svg.png" alt="start" height = "20px" width="20px">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Stj%C3%A4rna.svg/2000px-Stj%C3%A4rna.svg.png" alt="start" height = "20px" width="20px">
+{% endif %}
+
+{% if choice.product_rating == 2 %}
+<img src="http://pngimg.com/upload/star_PNG1592.png" alt="start" height = "20px" width="20px">
+<img src="http://pngimg.com/upload/star_PNG1592.png" alt="start" height = "20px" width="20px">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Stj%C3%A4rna.svg/2000px-Stj%C3%A4rna.svg.png" alt="start" height = "20px" width="20px">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Stj%C3%A4rna.svg/2000px-Stj%C3%A4rna.svg.png" alt="start" height = "20px" width="20px">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Stj%C3%A4rna.svg/2000px-Stj%C3%A4rna.svg.png" alt="start" height = "20px" width="20px">
+{% endif %}
+{% if choice.product_rating == 3 %}
+<img src="http://pngimg.com/upload/star_PNG1592.png" alt="start" height = "20px" width="20px">
+<img src="http://pngimg.com/upload/star_PNG1592.png" alt="start" height = "20px" width="20px">
+<img src="http://pngimg.com/upload/star_PNG1592.png" alt="start" height = "20px" width="20px">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Stj%C3%A4rna.svg/2000px-Stj%C3%A4rna.svg.png" alt="start" height = "20px" width="20px">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Stj%C3%A4rna.svg/2000px-Stj%C3%A4rna.svg.png" alt="start" height = "20px" width="20px">
+{% endif %}
+{% if choice.product_rating == 4 %}
+<img src="http://pngimg.com/upload/star_PNG1592.png" alt="start" height = "20px" width="20px">
+<img src="http://pngimg.com/upload/star_PNG1592.png" alt="start" height = "20px" width="20px">
+<img src="http://pngimg.com/upload/star_PNG1592.png" alt="start" height = "20px" width="20px">
+<img src="http://pngimg.com/upload/star_PNG1592.png" alt="start" height = "20px" width="20px">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Stj%C3%A4rna.svg/2000px-Stj%C3%A4rna.svg.png" alt="start" height = "20px" width="20px">
+{% endif %}
+{% if choice.product_rating == 5 %}
+<img src="http://pngimg.com/upload/star_PNG1592.png" alt="start" height = "20px" width="20px">
+<img src="http://pngimg.com/upload/star_PNG1592.png" alt="start" height = "20px" width="20px">
+<img src="http://pngimg.com/upload/star_PNG1592.png" alt="start" height = "20px" width="20px">
+<img src="http://pngimg.com/upload/star_PNG1592.png" alt="start" height = "20px" width="20px">
+<img src="http://pngimg.com/upload/star_PNG1592.png" alt="start" height = "20px" width="20px">
+{% endif %}
+<br>
+{% if choice.certified == 'True' %}
+<img src="http://img6a.flixcart.com/www/prod/images/certified_buyer-e6c64f39.png" alt="Smiley face">
+{% endif %}
+
+</div>
+
+<div id="header">
+<h3>{{choice.title}}</h3>
+</div>
+<div id="section">
+<p>{{choice.desc}}'</p>
+</div>
+
+
+<div id="footer">
+Number of upvotes : {{choice.upvotes}}  Total number of votes : {{choice.total_votes}}
+</div>
+<br>
+</div>
+{% endfor %}
+
+</div>
+
+</body>
+</html>

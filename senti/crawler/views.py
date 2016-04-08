@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.template import RequestContext
 from crawler.crawl_helper import *
 from crawler.api import *
@@ -28,7 +28,7 @@ def crawl(request, type, id):
 		crawl_product_list(category)
 		return redirect('categories')
 	elif type == "product":
-		product = get_object_or_404(Product, id = product_id)
+		product = get_object_or_404(Product, id = id)
 		crawl_product_reviews(product)
 		return redirect('home')
 	return
