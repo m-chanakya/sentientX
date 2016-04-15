@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Sentiment Analysis</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+<div id="tester"></div>
+ <script>
+    TESTER = document.getElementById('tester');
+    Plotly.plot( TESTER, [{
+    x: {{x|safe}},
+    y: {{y|safe}},
+    type: "bar"
+  }]);
+  </script>
+</body>
+</html>
