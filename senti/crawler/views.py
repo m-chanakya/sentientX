@@ -43,10 +43,10 @@ def crawl(request, type, id):
 		category = get_object_or_404(Category, id = id)
 		category.crawled_date = timezone.now()
 		category.save()
-		crawl_products.delay(category = int(id))
+		crawl_products(category = int(id))
 	elif type == "product":
 		product = get_object_or_404(Product, id = id)
 		product.crawled_date = timezone.now()
 		product.save()
-		crawl_reviews.delay(product = int(id))
+		crawl_reviews(product = int(id))
 	return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
