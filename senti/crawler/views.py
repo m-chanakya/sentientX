@@ -26,11 +26,11 @@ def reviews(request, product_id, start):
 	start = int(start)
 	PAGE_LEN = 20
 	if start < len(Review.objects.filter(product= product)):
-		next = "http://localhost:8000/crawler/reviews/"+str(product_id)+"/"+str(start+PAGE_LEN)
+		next = "/crawler/reviews/"+str(product_id)+"/"+str(start+PAGE_LEN)
 	else:
 		next = None
 	if start >= 20:
-		prev = "http://localhost:8000/crawler/reviews/"+str(product_id)+"/"+str(start-PAGE_LEN)
+		prev = "/crawler/reviews/"+str(product_id)+"/"+str(start-PAGE_LEN)
 	else:
 		prev = None
 

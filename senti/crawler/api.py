@@ -2,9 +2,9 @@ from crawler.models import *
 
 def render_category(category):
 	return {
-		'link': "http://localhost:8000/crawler/products/"+str(category.id),
+		'link': "/crawler/products/"+str(category.id),
 		'name': category.name,
-		'relink': "http://localhost:8000/crawler/crawl/category/"+str(category.id),
+		'relink': "/crawler/crawl/category/"+str(category.id),
 		'date': category.crawled_date,
 		'total': len(Product.objects.filter(category= category))
 	}
@@ -17,8 +17,8 @@ def render_categories():
 
 def render_product(product):
 	return {
-		'link': "http://localhost:8000/crawler/reviews/"+str(product.id)+"/0",
-		'relink': "http://localhost:8000/crawler/crawl/product/"+str(product.id),
+		'link': "/crawler/reviews/"+str(product.id)+"/0",
+		'relink': "/crawler/crawl/product/"+str(product.id),
 		'name': product.name,
 		'date': product.crawled_date,
 		'total': len(Review.objects.filter(product= product))
